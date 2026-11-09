@@ -12,14 +12,15 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 
 //Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+//no puse mi env en config si no afuera y tuve q cambiar el path
+require("dotenv").config({ path: ".env" });
 
 // Passport config
 require("./config/passport")(passport);
 
 //Connect To Database
 connectDB();
-
+ 
 //Using EJS for views
 app.set("view engine", "ejs");
 

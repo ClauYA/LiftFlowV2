@@ -19,6 +19,9 @@ module.exports = {
     }
   },
   getPost: async (req, res) => {
+    //console.log(req)
+    //console.log(req.params)
+    //console.log(req.user)
     try {
       const post = await Post.findById(req.params.id);
       res.render("post.ejs", { post: post, user: req.user });
@@ -43,6 +46,7 @@ module.exports = {
       res.redirect("/profile");
     } catch (err) {
       console.log(err);
+      res.status(500).send("Could not create the post: " + err.message);
     }
   },
   likePost: async (req, res) => {
