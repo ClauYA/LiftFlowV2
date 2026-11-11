@@ -13,4 +13,9 @@ module.exports = {
       res.redirect("/dashboard");
     }
   },
+  ensureRole: (role) => (req, res, next) => {
+    if (req.user && req.user.role === role) 
+      return next();
+    res.redirect('/dashboard');
+  },
 };

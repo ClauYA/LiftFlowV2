@@ -1,4 +1,4 @@
-<%- include('partials/sidebar.ejs') -%>
+<%- include('partials/sidebar-athlete.ejs') -%>
  <main class="min-w-0 p-4 lg:ml-64 lg:p-8">
     <!-- ========== TABS ========== -->
     <section class="mx-auto w-full max-w-3xl">
@@ -40,7 +40,7 @@
           <h3 class="text-xl font-semibold">Let's get started</h3>
           <div class="row mt-5">
            <div class="col-6"> 
-
+<!--
                 <div class="mt-5">
                   <h2>Add a post</h2>
                   <form action="/post/createPost" enctype="multipart/form-data" method="POST">
@@ -75,7 +75,7 @@
               </div>  
             </div>  
           </div>
-
+-->
 
           <% if (user.local && user.local.email) { %>
             <form id="account-form" class="mt-4 flex max-w-md flex-col gap-4" novalidate>

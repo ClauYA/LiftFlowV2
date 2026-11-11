@@ -2,6 +2,9 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 
+const roles = ['athlete', 'coach', 'both']
+
+
 exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect("/profile");
@@ -66,6 +69,8 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = (req, res, next) => {
+  
+  const role = roles.includes(req.body.role) ? req.body.role : 'athlete';
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address." });
@@ -88,6 +93,7 @@ exports.postSignup = (req, res, next) => {
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
+    role
   });
 
   User.findOne(
